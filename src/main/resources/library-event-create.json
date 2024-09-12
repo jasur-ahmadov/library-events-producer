@@ -1,6 +1,6 @@
 {
   "libraryEventId": null,
-  "libraryEventType": "NEW",
+  "libraryEventType": "CREATE",
   "book": {
     "bookId": 123,
     "bookName": "Kafka Using Spring Boot",
