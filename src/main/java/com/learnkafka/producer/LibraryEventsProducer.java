@@ -30,7 +30,8 @@ public class LibraryEventsProducer {
     public CompletableFuture<SendResult<Integer, String>> sendLibraryEvent(LibraryEvent libraryEvent) throws JsonProcessingException {
         var key = libraryEvent.libraryEventId();
         var value = objectMapper.writeValueAsString(libraryEvent);
-        var completableFuture = kafkaTemplate.send(topic, key, value);
+        var producerRecord = buildProducerRecord(key, value);
+        var completableFuture = kafkaTemplate.send(producerRecord);
 
         return completableFuture
                 .whenComplete((sendResult, throwable) -> {
